@@ -16,7 +16,7 @@ public class Ticket90minutes extends SingleUseTicket {
 	 */
 	@Override
 	public String toString() {
-		return super.toString() + 'n' + '\t' + '\t' + "90 minutes ticket";
+		return super.toString() + '\t' + "** - 90 minutes ticket";
 	}
 	
 	
