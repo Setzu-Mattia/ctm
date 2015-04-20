@@ -9,6 +9,7 @@ import it.unica.isw.ctm.tickets.exceptions.AlreadyValidatedException;
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
 import it.unica.isw.ctm.tickets.exceptions.info.NoValidationDateFoundException;
 import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
+import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 import java.util.Date;
 
@@ -27,8 +28,8 @@ public abstract class SingleUseTicket extends Ticket {
 	/**
 	 * Default ticket, expire date not set.
 	 */
-	public SingleUseTicket(long id) {
-		super(id);
+	public SingleUseTicket(VENDORS vendor, long id) {
+		super(vendor, id);
 		expireDate = defaultExpireDate;
 		timeStamp = null;
 		validated = false;
@@ -51,7 +52,7 @@ public abstract class SingleUseTicket extends Ticket {
 				expiredString = "Still valid, will expire on " + expireDate;
 		}
 			
-		return ("Ticket" + '\n'
+		return (super.toString() + 
 					+ '\t' + "Type: SingleUseTicket" + '\n' +
 					'\t' + "ID: " + id  + '\n' +
 					'\t' + "Validated: " + validated + '\n' +

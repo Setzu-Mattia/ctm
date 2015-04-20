@@ -1,7 +1,7 @@
 package it.unica.isw.ctm.tickets;
 
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
-import it.unica.isw.ctm.tickets.kinds.VENDORS;
+import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 import java.util.Date;
 
@@ -19,7 +19,8 @@ public abstract class Ticket {
 	/**
 	 * Default constructor. 
 	 */
-	public Ticket(long id) {
+	public Ticket(VENDORS vendor, long id) {
+		this.vendor = vendor;
 		this.id = id;
 	}
 	
@@ -30,7 +31,8 @@ public abstract class Ticket {
 	@Override
 	public boolean equals(Object object) {
 		if (object instanceof Ticket)
-			return (this.getId() == ((Ticket)object).getId());
+			return (this.getId() == ((Ticket)object).getId()
+					&& this.getVendor() == ((Ticket)object).getVendor());
 		return false;
 	}
 	
@@ -48,7 +50,7 @@ public abstract class Ticket {
 	 */
 	@Override
 	public String toString() {
-		return ("Ticket" + '\n' + '\t' + "ID: " + id);
+		return (vendor.name() + " Ticket" + '\n' + '\t' + "ID: " + id);
 	}
 	
 	

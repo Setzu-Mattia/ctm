@@ -10,6 +10,7 @@ import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.factories.AbstractSingleUseTicketFactory;
 import it.unica.isw.ctm.tickets.factories.DefaultSingleUseTicketFactory;
 import it.unica.isw.ctm.tickets.factories.TicketFactory;
+import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 
 /**
@@ -38,12 +39,18 @@ public class App {
 	    				printTickets(Wallet.getInstance().getTickets());
 	    				break;
 	    			case 2:
-	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket());
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket(VENDORS.CTM));
 	    				break;
 	    			case 3:
-	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket());
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket(VENDORS.CTM));
 	    				break;
 	    			case 4:
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket(VENDORS.ARST));
+	    				break;
+	    			case 5:
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket(VENDORS.ARST));
+	    				break;
+	    			case 6:
 	    				System.out.println("Exiting");
 	    				exit = true;
 	    				break;
@@ -74,9 +81,16 @@ public class App {
     private static void printMenu() {
     	System.out.println("CTM App menu");
     	System.out.println("Select an option below:");
+    	
     	System.out.println('\t' + "[1] List tickets");
-    	System.out.println('\t' + "[2] Buy 90 minutes ticket.");
-    	System.out.println('\t' + "[3] Buy 120 minutes ticket.");
-    	System.out.println('\t' + "[4] Exit.");
+    	System.out.println('\t' + "[-] CTM ticket.");
+    		System.out.println('\t' + '\t' + "[2] Buy 90 minutes ticket");
+    		System.out.println('\t' + '\t' + "[3] Buy 120 minutes ticket.");
+    		
+    	System.out.println('\t' + "[-] ARST ticket.");
+    		System.out.println('\t' + '\t' + "[4] Buy 90 minutes ticket");
+    		System.out.println('\t' + '\t' + "[5] Buy 120 minutes ticket.");
+    		
+    	System.out.println('\t' + "[6] Exit.");
     }
 }

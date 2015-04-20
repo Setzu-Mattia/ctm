@@ -1,6 +1,7 @@
 package it.unica.isw.ctm.tickets.singleusetickets;
 
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
+import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 
 /**
@@ -8,8 +9,8 @@ import it.unica.isw.ctm.tickets.exceptions.ValidationException;
  */
 public class Ticket120minutes extends SingleUseTicket {
 
-	public Ticket120minutes(long id) {
-		super(id);
+	public Ticket120minutes(VENDORS vendor, long id) {
+		super(vendor, id);
 	}
 
 	

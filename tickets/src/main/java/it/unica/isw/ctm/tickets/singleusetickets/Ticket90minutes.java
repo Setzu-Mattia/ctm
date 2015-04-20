@@ -1,13 +1,15 @@
 package it.unica.isw.ctm.tickets.singleusetickets;
 
+import it.unica.isw.ctm.tickets.vendors.VENDORS;
+
 
 /**
  * Ticket active for 90 minutes from its validation.
  */
 public class Ticket90minutes extends SingleUseTicket {
 
-	public Ticket90minutes(long id) {
-		super(id);
+	public Ticket90minutes(VENDORS vendor, long id) {
+		super(vendor, id);
 	}
 
 
