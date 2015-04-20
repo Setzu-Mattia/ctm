@@ -14,22 +14,23 @@ public class AbstractTicketFactory implements TicketFactory {
 	
 	
 	private AbstractTicketFactory() {
-		instance = new AbstractTicketFactory();
 		AbstractTicketFactory.kindsFactories = new HashSet<TicketFactory>();
 		AbstractTicketFactory.kindsFactories.add(DefaultSingleUseTicketsFactory.getInstance());
 	}
 	
-	private Collection<TicketFactory> getKindsFactories() {
-		return kindsFactories;
+	
+	public static AbstractTicketFactory getInstance() {
+		if (instance == null)
+			instance = new AbstractTicketFactory();
+		return instance;
 	}
 	
-	private Collection<TicketFactory> setKindsFactories(Collection<TicketFactory> kindsFactories) {
-		this.kindsFactories = kindsFactories;
-	}
 	
 	@Override
-	public Ticket getTicket(VENDORS vendor, SINGLE_USE_TICKETS factory) {
-		// TODO Auto-generated method stub
+	public Ticket getTicket(VENDORS vendor, SINGLE_USE_TICKETS ticket) {
+		for (TicketFactory current : kindsFactories)
+			if (current.equals(DefaultSingleUseTicketsFactory.getInstance()))
+				return current.getTicket(vendor, ticket);
 		return null;
 	}
 

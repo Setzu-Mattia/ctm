@@ -10,7 +10,6 @@ import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.factories.AbstractSingleUseTicketFactory;
 import it.unica.isw.ctm.tickets.factories.SingleUseTicketFactory;
 import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
-import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
 import it.unica.isw.ctm.tickets.singleusetickets.Ticket120minutes;
 import it.unica.isw.ctm.tickets.singleusetickets.Ticket90minutes;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
@@ -58,9 +57,8 @@ public class CTMSingleUseTicketsFactory extends AbstractSingleUseTicketFactory
 
 
 	@Override
-	public Ticket getTicket(VENDORS vendor, TICKETS_KINDS kind) {
-		// TODO Auto-generated method stub
-		return null;
+	public Ticket getTicket(VENDORS vendor, SINGLE_USE_TICKETS kind) {
+		return (SingleUseTicket)getSingleUseTicket(kind);
 	}
 
 

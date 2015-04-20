@@ -1,9 +1,11 @@
 package it.unica.isw.ctm.tickets.factories;
 
-import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
-import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
-import java.util.Collection;
+import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
+import it.unica.isw.ctm.tickets.vendors.VENDORS;
+import it.unica.isw.ctm.tickets.vendors.factories.ARSTSingleUseTicketsFactory;
+import it.unica.isw.ctm.tickets.vendors.factories.CTMSingleUseTicketsFactory;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,13 +13,19 @@ import java.util.Map;
 public class VendorsFactories {
 
 	private static VendorsFactories instance;
-	private static Map<VENDORS,Collection<TicketFactory>> vendorsMap;
-	private static Map<SINGLE_USE_TICKETS, TicketFactory> factoriesMap;
+	private static Map<VENDORS, Map<TICKETS_KINDS, TicketFactory>> vendorsMap;
 	
 	
 	private VendorsFactories() {
-		vendorsMap = new HashMap<VENDORS,Collection<TicketFactory>>();
-		factoriesMap = new HashMap<SINGLE_USE_TICKETS, TicketFactory>();
+		vendorsMap = new HashMap<VENDORS, Map<TICKETS_KINDS, TicketFactory>>();
+		HashMap<TICKETS_KINDS, TicketFactory> CTMticketsMap = new HashMap<TICKETS_KINDS, TicketFactory>();
+		HashMap<TICKETS_KINDS, TicketFactory> ARSTticketsMap = new HashMap<TICKETS_KINDS, TicketFactory>();
+		
+		ARSTticketsMap.put(TICKETS_KINDS.SINGLE_USE_TICKET, ARSTSingleUseTicketsFactory.getInstance());
+		CTMticketsMap.put(TICKETS_KINDS.SINGLE_USE_TICKET, CTMSingleUseTicketsFactory.getInstance());
+		
+		vendorsMap.put(VENDORS.CTM, CTMticketsMap);
+		vendorsMap.put(VENDORS.ARST, ARSTticketsMap);		
 	}
 	
 	
@@ -33,22 +41,13 @@ public class VendorsFactories {
 	
 	
 	/**
-	 * Get the tickets factories of the given {@link vendor}.
-	 * @param vendor	The vendor.
-	 * @return			The tickets factories of the given {@link vendor}.
+	 * Get the {@link vendor}'s factory for the given {@link kind}.
+	 * @param vendor	The requested vendor.
+	 * @param kind		The requested kind.
+	 * @return			The {@link vendor}'s factory for the given {@link kind}.
 	 */
-	private Collection<TicketFactory> getTicketsFactories(VENDORS vendor) {
-		return vendorsMap.get(vendor);
-	}
-	
-	
-	/**
-	 * Get the tickets factories of the given {@link vendor}.
-	 * @param vendor	The vendor.
-	 * @return			The tickets factories of the given {@link vendor}.
-	 */
-	public TicketFactory getTicketFactory(VENDORS vendor) {
-		return factoriesMap.get(vendor);
+	public TicketFactory getTicketFactory(VENDORS vendor, TICKETS_KINDS kind) {
+		return vendorsMap.get(vendor).get(kind);
 	}
 	
 }

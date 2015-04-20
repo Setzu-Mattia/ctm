@@ -9,13 +9,15 @@ import java.util.Iterator;
 import junit.framework.Assert;
 import it.unica.isw.ctm.Wallet;
 import it.unica.isw.ctm.tickets.Ticket;
-import it.unica.isw.ctm.tickets.factories.DefaultSingleUseTicketFactory;
+import it.unica.isw.ctm.tickets.factories.AbstractTicketFactory;
+import it.unica.isw.ctm.tickets.factories.TicketFactory;
+import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 
 public class WalletTest {
 
-	private static DefaultSingleUseTicketFactory factory = new DefaultSingleUseTicketFactory();
+	private static TicketFactory factory = AbstractTicketFactory.getInstance();
 	private static Random randomGenerator = new Random();
 	
 	private Set<Ticket> getRandomTickets(int n) {
@@ -23,11 +25,11 @@ public class WalletTest {
 		
 		for (int i = 0; i < n; i++) {
 			if(randomGenerator.nextBoolean())
-				tickets.add(factory.get120MinutesTicket(VENDORS.CTM));
+				tickets.add(factory.getTicket(VENDORS.ARST, SINGLE_USE_TICKETS.TICKET_120MINUTES));
 			else
-				tickets.add(factory.get90MinutesTicket(VENDORS.ARST));
+				tickets.add(factory.getTicket(VENDORS.CTM, SINGLE_USE_TICKETS.TICKET_120MINUTES));
 		}
-		
+
 		return tickets;
 	}
 	
@@ -37,32 +39,34 @@ public class WalletTest {
 			wallet.addTicket(current);
 	}
 	
-	public void testConstructor() {		
+	public void testConstructor() {
+		Wallet.getInstance().clear();
 		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 0);
 	}
 	
 	
 	public void testAdd() {
-		
+		Wallet.getInstance().clear();
 		Set<Ticket> tickets = getRandomTickets(10);		
-		
+
 		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 0);
 		
 		populateWallet(Wallet.getInstance(),tickets);
 		
 		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 10);
 		
-		Wallet.getInstance().addTicket(factory.get120MinutesTicket(VENDORS.CTM));
+		Wallet.getInstance().addTicket(factory.getTicket(VENDORS.ARST, SINGLE_USE_TICKETS.TICKET_120MINUTES));
 		
 		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 11);
 	}
 	
 	
 	public void testRemove() {
-		
+		Wallet.getInstance().clear();
 		Set<Ticket> toRemove = new HashSet<Ticket>();
 		
 		populateWallet(Wallet.getInstance(),getRandomTickets(50));
+		
 		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 50);
 		
 		Collection<Ticket> ticketsAcquired = Wallet.getInstance().getTickets();
@@ -72,12 +76,16 @@ public class WalletTest {
 		for (int i = 0; i < 10; i++)
 			toRemove.add(iter.next());
 		
-		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 50);
+		for (Ticket current : toRemove)
+			Wallet.getInstance().removeTicket(current);
+		
+		System.out.println(Wallet.getInstance().getTickets().size());
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 40);
 		
 		Object[] tickets = toRemove.toArray();
 		
 		for (int i = 0; i < 10; i++)
-			Wallet.getInstance().removeTicket((Ticket	)tickets[i]);
+			Wallet.getInstance().removeTicket((Ticket)tickets[i]);
 		
 		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 40);
 	}

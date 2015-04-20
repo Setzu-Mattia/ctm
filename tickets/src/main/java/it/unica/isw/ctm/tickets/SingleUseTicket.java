@@ -51,9 +51,7 @@ public abstract class SingleUseTicket extends Ticket {
 				expiredString = "Still valid, will expire on " + expireDate;
 		}
 			
-		return (super.toString() + 
-					+ '\t' + "Type: SingleUseTicket" + '\n' +
-					'\t' + "ID: " + id  + '\n' +
+		return (super.toString() + '\n' +
 					'\t' + "Validated: " + validated + '\n' +
 					'\t' + validatedString + '\n' + 
 					'\t' + expiredString);

@@ -36,4 +36,8 @@ public class Wallet {
 		tickets.remove(ticket);
 	}
 	
+	public void clear() {
+		Wallet.getInstance().tickets.clear();
+	}
+	
 }

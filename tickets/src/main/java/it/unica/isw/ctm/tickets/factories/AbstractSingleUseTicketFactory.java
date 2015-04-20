@@ -1,7 +1,6 @@
 package it.unica.isw.ctm.tickets.factories;
 
 
-import it.unica.isw.ctm.tickets.SingleUseTicket;
 import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.factories.exceptions.FactoryTypeException;
 import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
@@ -25,7 +24,7 @@ public class AbstractSingleUseTicketFactory implements TicketFactory {
 	 * @param ticket	The ticket requested.
 	 * @return			The requested ticket.
 	 */
-	public SingleUseTicket getTicket(VENDORS vendor, SINGLE_USE_TICKETS ticket) {
+	public Ticket getTicket(VENDORS vendor, SINGLE_USE_TICKETS ticket) {
 		return factoriesHub.getSingleUseTicket(vendor, ticket);
 	}
 
