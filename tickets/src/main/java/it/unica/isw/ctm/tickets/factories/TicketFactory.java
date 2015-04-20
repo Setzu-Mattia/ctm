@@ -1,8 +1,9 @@
 package it.unica.isw.ctm.tickets.factories;
 
 import it.unica.isw.ctm.tickets.Ticket;
-import it.unica.isw.ctm.tickets.kinds.TICKETS;
+import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
+
 
 public interface TicketFactory {
 	
@@ -15,6 +16,6 @@ public interface TicketFactory {
 	 * @param kind		The requeted ticket.
 	 * @return			The requested ticket.
 	 */
-	Ticket getTicket(VENDORS vendor, TICKETS kind);
+	Ticket getTicket(VENDORS vendor, SINGLE_USE_TICKETS factory);
 	
 }

@@ -9,6 +9,7 @@ import it.unica.isw.ctm.Wallet;
 import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.factories.AbstractSingleUseTicketFactory;
 import it.unica.isw.ctm.tickets.factories.DefaultSingleUseTicketFactory;
+import it.unica.isw.ctm.tickets.factories.DefaultSingleUseTicketsFactory;
 import it.unica.isw.ctm.tickets.factories.TicketFactory;
 import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
@@ -19,7 +20,7 @@ import it.unica.isw.ctm.tickets.vendors.VENDORS;
  */
 public class App {
 	
-	private static TicketFactory factory = new DefaultSingleUseTicketFactory();
+	private static TicketFactory factory = new DefaultSingleUseTicketsFactory();
 	 
 	
     public static void main( String[] args ) {

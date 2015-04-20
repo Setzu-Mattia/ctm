@@ -1,6 +1,6 @@
 package it.unica.isw.ctm.tickets.factories.exceptions;
 
-import it.unica.isw.ctm.tickets.kinds.TICKETS;
+import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 
@@ -11,7 +11,7 @@ import it.unica.isw.ctm.tickets.vendors.VENDORS;
 public class FactoryTypeException extends RuntimeException {
 
 	private VENDORS vendor;
-	private TICKETS ticketType;
+	private TICKETS_KINDS ticketType;
 	
 	
 	/**
@@ -19,7 +19,7 @@ public class FactoryTypeException extends RuntimeException {
 	 * @param vendor		The vendor requested.
 	 * @param ticketType	The ticket requested.
 	 */
-	public FactoryTypeException(VENDORS vendor, TICKETS ticketType) {
+	public FactoryTypeException(VENDORS vendor, TICKETS_KINDS ticketType) {
 		this.vendor = vendor;
 		this.ticketType = ticketType;
 	}
@@ -30,7 +30,7 @@ public class FactoryTypeException extends RuntimeException {
 	}
 
 
-	public TICKETS getTicketType() {
+	public TICKETS_KINDS getTicketType() {
 		return ticketType;
 	}	
 	

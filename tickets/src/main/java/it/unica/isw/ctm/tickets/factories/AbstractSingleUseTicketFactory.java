@@ -2,25 +2,22 @@ package it.unica.isw.ctm.tickets.factories;
 
 
 import it.unica.isw.ctm.tickets.SingleUseTicket;
+import it.unica.isw.ctm.tickets.Ticket;
+import it.unica.isw.ctm.tickets.factories.exceptions.FactoryTypeException;
 import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
+import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 
 /**
  * Abstract interface for ticket generation.
  */
-public abstract class AbstractSingleUseTicketFactory implements TicketFactory {	
+public class AbstractSingleUseTicketFactory implements TicketFactory {
 	
 	private static SingleUseTicketFactoryHub factoriesHub = new SingleUseTicketFactoryHub()
 																	.buildCTMFactory()
 																	.buildARSTFactory();
-	
-	/**
-	 * Generate a unique ID.
-	 * @return		A unique id.
-	 */
-	protected abstract long generateId();
-	
+
 	
 	/**
 	 * Get a single use ticket.
@@ -31,14 +28,12 @@ public abstract class AbstractSingleUseTicketFactory implements TicketFactory {
 	public SingleUseTicket getTicket(VENDORS vendor, SINGLE_USE_TICKETS ticket) {
 		return factoriesHub.getSingleUseTicket(vendor, ticket);
 	}
-	
-	
-	/**
-	 * Get the requested ticket.
-	 * @param vendor	The vendor requested.
-	 * @param ticket	The ticket requested.
-	 * @return			The requested ticket.	 
-	 */
-	protected abstract SingleUseTicket getSingleUseTicket(SINGLE_USE_TICKETS kind);
+
+
+	public Ticket getTicket(VENDORS vendor, TICKETS_KINDS kind) {
+		if (kind == TICKETS_KINDS.SINGLE_USE_TICKET)
+			return ((Ticket)(getTicket(vendor,kind)));
+		throw new FactoryTypeException(vendor, kind);
+	}
 	
 }
