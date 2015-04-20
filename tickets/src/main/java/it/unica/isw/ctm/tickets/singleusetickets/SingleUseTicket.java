@@ -4,11 +4,11 @@
 package it.unica.isw.ctm.tickets.singleusetickets;
 
 
-import it.unica.isw.ctm.tickets.TICKETS;
 import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.exceptions.AlreadyValidatedException;
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
 import it.unica.isw.ctm.tickets.exceptions.info.NoValidationDateFoundException;
+import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
 
 import java.util.Date;
 
@@ -89,7 +89,7 @@ public abstract class SingleUseTicket extends Ticket {
 	 * @throws Exception 
 	 */
 	public void validate(SingleUseTicket ticket) throws ValidationException {
-		switch(TICKETS.is(ticket)) {
+		switch(SINGLE_USE_TICKETS.is(ticket)) {
 			case TICKET_90MINUTES:
 				throw new ValidationException(ticket.getId());
 			case TICKET_120MINUTES:

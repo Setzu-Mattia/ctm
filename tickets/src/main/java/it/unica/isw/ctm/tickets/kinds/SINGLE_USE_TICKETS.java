@@ -1,4 +1,4 @@
-package it.unica.isw.ctm.tickets;
+package it.unica.isw.ctm.tickets.kinds;
 
 import it.unica.isw.ctm.tickets.singleusetickets.SingleUseTicket;
 import it.unica.isw.ctm.tickets.singleusetickets.Ticket90minutes;
@@ -7,7 +7,7 @@ import it.unica.isw.ctm.tickets.singleusetickets.Ticket90minutes;
 /**
  * Enumerate tickets available.
  */
-public enum TICKETS {
+public enum SINGLE_USE_TICKETS {
 
 	TICKET_90MINUTES,
 	TICKET_120MINUTES;
@@ -18,7 +18,7 @@ public enum TICKETS {
 	 * @param ticket	The ticket to check.
 	 * @return			The ticket type.
 	 */
-	public static TICKETS is(SingleUseTicket ticket) {
+	public static SINGLE_USE_TICKETS is(SingleUseTicket ticket) {
 		if (ticket instanceof Ticket90minutes)
 			return TICKET_90MINUTES;
 		

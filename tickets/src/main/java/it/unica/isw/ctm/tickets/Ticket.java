@@ -1,6 +1,7 @@
 package it.unica.isw.ctm.tickets;
 
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
+import it.unica.isw.ctm.tickets.kinds.VENDORS;
 
 import java.util.Date;
 
@@ -13,6 +14,7 @@ public abstract class Ticket {
 	/** Random id */
 	protected long id;
 	protected static Date defaultExpireDate = new Date(0L);
+	private VENDORS vendor;
 	
 	/**
 	 * Default constructor. 
@@ -56,6 +58,15 @@ public abstract class Ticket {
 	 */
 	public long getId() {
 		return id;
+	}
+	
+	
+	/**
+	 * Get the ticket vendor.
+	 * @return		The ticket vendor.
+	 */
+	public VENDORS getVendor() {
+		return vendor;
 	}
 	
 	

@@ -9,6 +9,27 @@
   <name>app</name>
   <description>CTM App</description>
 
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>exec-maven-plugin</artifactId>
+              <version>1.4.0</version>
+              <executions>
+                  <execution>
+                      <goals>
+                          <goal>exec</goal>
+                      </goals>
+                  </execution>
+              </executions>
+              <configuration>
+                  <executable>java -cp ctm/target/ctm-1.0-SNAPSHOT.jar</executable>
+                  <mainClass>it.unica.isw.ctm.console.App</mainClass>
+              </configuration>
+          </plugin>
+      </plugins>
+  </build>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>

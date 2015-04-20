@@ -37,55 +37,49 @@ public class WalletTest {
 			wallet.addTicket(current);
 	}
 	
-	public void testConstructor() {
-		
-		Wallet wallet = new Wallet();
-		
-		Assert.assertTrue(wallet.getTickets().size() == 0);
-		
+	public void testConstructor() {		
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 0);
 	}
 	
 	
 	public void testAdd() {
 		
-		Wallet wallet = new Wallet();		
 		Set<Ticket> tickets = getRandomTickets(10);		
 		
-		Assert.assertTrue(wallet.getTickets().size() == 0);
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 0);
 		
-		populateWallet(wallet,tickets);
+		populateWallet(Wallet.getInstance(),tickets);
 		
-		Assert.assertTrue(wallet.getTickets().size() == 10);
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 10);
 		
-		wallet.addTicket(factory.get120MinutesTicket());
+		Wallet.getInstance().addTicket(factory.get120MinutesTicket());
 		
-		Assert.assertTrue(wallet.getTickets().size() == 11);
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 11);
 	}
 	
 	
 	public void testRemove() {
 		
-		Wallet wallet = new Wallet();
 		Set<Ticket> toRemove = new HashSet<Ticket>();
 		
-		populateWallet(wallet,getRandomTickets(50));
-		Assert.assertTrue(wallet.getTickets().size() == 50);
+		populateWallet(Wallet.getInstance(),getRandomTickets(50));
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 50);
 		
-		Collection<Ticket> ticketsAcquired = wallet.getTickets();
+		Collection<Ticket> ticketsAcquired = Wallet.getInstance().getTickets();
 		
 		Iterator<Ticket> iter = ticketsAcquired.iterator();
 		
 		for (int i = 0; i < 10; i++)
 			toRemove.add(iter.next());
 		
-		Assert.assertTrue(wallet.getTickets().size() == 50);
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 50);
 		
 		Object[] tickets = toRemove.toArray();
 		
 		for (int i = 0; i < 10; i++)
-			wallet.removeTicket((Ticket	)tickets[i]);
+			Wallet.getInstance().removeTicket((Ticket	)tickets[i]);
 		
-		Assert.assertTrue(wallet.getTickets().size() == 40);
+		Assert.assertTrue(Wallet.getInstance().getTickets().size() == 40);
 	}
 	
 }

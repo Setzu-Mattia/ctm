@@ -18,7 +18,6 @@ import it.unica.isw.ctm.tickets.factories.TicketFactory;
 public class App {
 	
 	private static TicketFactory factory = new DefaultSingleUseTicketFactory();
-	private static Wallet wallet = new Wallet();
 	private static Scanner scanner = new Scanner(System.in);
 	private static boolean exit = false; 
 	
@@ -36,13 +35,13 @@ public class App {
 	    			case 0:
 	    				continue;
 	    			case 1:
-	    				printTickets(wallet.getTickets());
+	    				printTickets(Wallet.getInstance().getTickets());
 	    				break;
 	    			case 2:
-	    				wallet.addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket());
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket());
 	    				break;
 	    			case 3:
-	    				wallet.addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket());
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket());
 	    				break;
 	    			case 4:
 	    				System.out.println("Exiting");

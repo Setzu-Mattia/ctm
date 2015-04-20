@@ -8,13 +8,21 @@ import java.util.Vector;
 
 public class Wallet {
 
+	private static Wallet wallet;
 	private Collection<Ticket> tickets;
 
 	
-	public Wallet() {
+	private Wallet() {
 		tickets = new Vector<Ticket>();
 	}
 
+	
+	public static Wallet getInstance() {
+		if(wallet == null)
+			wallet = new Wallet();
+		return wallet;
+	}
+	
 
 	public Collection<Ticket> getTickets() {
 		return tickets;
