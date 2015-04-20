@@ -10,6 +10,7 @@ import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.factories.AbstractSingleUseTicketFactory;
 import it.unica.isw.ctm.tickets.factories.DefaultSingleUseTicketFactory;
 import it.unica.isw.ctm.tickets.factories.TicketFactory;
+import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
 
@@ -19,11 +20,11 @@ import it.unica.isw.ctm.tickets.vendors.VENDORS;
 public class App {
 	
 	private static TicketFactory factory = new DefaultSingleUseTicketFactory();
-	private static Scanner scanner = new Scanner(System.in);
-	private static boolean exit = false; 
+	 
 	
     public static void main( String[] args ) {
-    	
+    	Scanner scanner = new Scanner(System.in);
+    	boolean exit = false;
     	int currentChoice = 0;
     	
     	while(!exit) {
@@ -36,22 +37,22 @@ public class App {
 	    			case 0:
 	    				continue;
 	    			case 1:
-	    				printTickets(Wallet.getInstance().getTickets());
+	    				printTickets(Wallet.getInstance().getTickets(SINGLE_USE_TICKETS.TICKET_90MINUTES));
 	    				break;
 	    			case 2:
-	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket(VENDORS.CTM));
+	    				Wallet.getInstance().addTicket(factory.getTicket(VENDORS.CTM, SINGLE_USE_TICKETS.TICKET_90MINUTESSINGLE_USE_TICKETS.TICKET_90MINUTES));
 	    				break;
 	    			case 3:
-	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket(VENDORS.CTM));
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket(VENDORS.CTM, SINGLE_USE_TICKETS.TICKET_90MINUTES));
 	    				break;
 	    			case 4:
-	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket(VENDORS.ARST));
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get90MinutesTicket(VENDORS.ARST, SINGLE_USE_TICKETS.TICKET_90MINUTES));
 	    				break;
 	    			case 5:
-	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket(VENDORS.ARST));
+	    				Wallet.getInstance().addTicket(((AbstractSingleUseTicketFactory)factory).get120MinutesTicket(VENDORS.ARST, SINGLE_USE_TICKETS.TICKET_90MINUTES));
 	    				break;
 	    			case 6:
-	    				System.out.println("Exiting");
+	    				scanner.close();
 	    				exit = true;
 	    				break;
 	    		}	    		

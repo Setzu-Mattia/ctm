@@ -1,5 +1,6 @@
 package it.unica.isw.ctm.tickets.singleusetickets;
 
+import it.unica.isw.ctm.tickets.SingleUseTicket;
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 

@@ -1,10 +1,9 @@
 /**
  * Tickets collection.
  */
-package it.unica.isw.ctm.tickets.singleusetickets;
+package it.unica.isw.ctm.tickets;
 
 
-import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.exceptions.AlreadyValidatedException;
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
 import it.unica.isw.ctm.tickets.exceptions.info.NoValidationDateFoundException;

@@ -1,6 +1,6 @@
 package it.unica.isw.ctm.tickets.kinds;
 
-import it.unica.isw.ctm.tickets.singleusetickets.SingleUseTicket;
+import it.unica.isw.ctm.tickets.SingleUseTicket;
 import it.unica.isw.ctm.tickets.singleusetickets.Ticket90minutes;
 
 

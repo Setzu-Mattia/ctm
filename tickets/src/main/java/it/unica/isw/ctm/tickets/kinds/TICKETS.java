@@ -4,9 +4,7 @@ import it.unica.isw.ctm.tickets.Ticket;
 
 public enum TICKETS {
 	
-	CTM_TICKET,
-	ARST_TICKET,
-	UNKNOWN;
+	SINGLE_USE_TICKET;
 	
 	/**
 	 * Identify the ticket kind.
@@ -14,14 +12,8 @@ public enum TICKETS {
 	 * @return			The ticket's kind.
 	 * @throws Exception 
 	 */
-	public TICKETS is(Ticket ticket) {
-		switch(ticket.getVendor()) {
-			case CTM:
-				return CTM_TICKET;
-			case ARST:
-				return ARST_TICKET;
-		}
-		return UNKNOWN;
+	public static TICKETS is(Ticket ticket) {
+		return SINGLE_USE_TICKET;
 	}
-	
+
 }
