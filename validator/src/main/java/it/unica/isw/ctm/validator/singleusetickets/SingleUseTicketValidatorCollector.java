@@ -10,7 +10,7 @@ import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
 import it.unica.isw.ctm.validator.AbstractTicketValidator;
 import it.unica.isw.ctm.validator.TicketValidator;
 import it.unica.isw.ctm.validator.exceptions.NoVendorValidatorException;
-import it.unica.isw.ctm.validator.exceptions.WrongValidatorKingException;
+import it.unica.isw.ctm.validator.exceptions.WrongValidatorKindException;
 
 
 /**
@@ -46,7 +46,7 @@ public class SingleUseTicketValidatorCollector extends AbstractTicketValidator i
 				throw new NoVendorValidatorException(ticket);
 			}
 		}
-		throw new WrongValidatorKingException(ticket);
+		throw new WrongValidatorKindException(ticket);
 		
 	}
 
