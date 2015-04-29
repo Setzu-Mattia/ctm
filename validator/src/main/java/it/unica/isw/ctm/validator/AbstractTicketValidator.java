@@ -1,4 +1,4 @@
-package it.unica.isw.ctm.validator.singleusetickets;
+package it.unica.isw.ctm.validator;
 
 
 /**

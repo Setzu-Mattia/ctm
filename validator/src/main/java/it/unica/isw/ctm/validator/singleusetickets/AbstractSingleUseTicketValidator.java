@@ -1,5 +1,6 @@
 package it.unica.isw.ctm.validator.singleusetickets;
 
+import it.unica.isw.ctm.validator.AbstractTicketValidator;
 import it.unica.isw.ctm.validator.TicketValidator;
 
 

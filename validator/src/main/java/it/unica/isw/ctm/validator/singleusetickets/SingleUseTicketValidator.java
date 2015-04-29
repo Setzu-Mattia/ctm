@@ -11,8 +11,9 @@ public interface SingleUseTicketValidator extends TicketValidator {
 
 	/**
 	 * Validate single-use ticket.
-	 * @param ticket	The ticket to validate.
+	 * @param ticket		The ticket to validate.
+	 * @throws Exception 	If something goes wrong.
 	 */
-	public void validate(SingleUseTicket ticket);
+	public void validate(SingleUseTicket ticket) throws Exception;
 	
 }
