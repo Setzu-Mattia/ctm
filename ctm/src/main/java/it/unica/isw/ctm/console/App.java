@@ -84,12 +84,12 @@ public class App {
     	
     	System.out.println('\t' + "[1] List tickets");
     	System.out.println('\t' + "[-] CTM ticket.");
-    		System.out.println('\t' + '\t' + "[2] Buy 90 minutes ticket");
-    		System.out.println('\t' + '\t' + "[3] Buy 120 minutes ticket.");
+    		System.out.println('\t' + " " + '\t' + "[2] Buy 90 minutes ticket");
+    		System.out.println('\t' + " " + '\t' + "[3] Buy 120 minutes ticket.");
     		
     	System.out.println('\t' + "[-] ARST ticket.");
-    		System.out.println('\t' + '\t' + "[4] Buy 90 minutes ticket");
-    		System.out.println('\t' + '\t' + "[5] Buy 120 minutes ticket.");
+    		System.out.println('\t' + " " + '\t' + "[4] Buy 90 minutes ticket");
+    		System.out.println('\t' + " " + '\t' + "[5] Buy 120 minutes ticket.");
     		
     	System.out.println('\t' + "[6] Exit.");
     }

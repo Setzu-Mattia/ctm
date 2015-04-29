@@ -10,7 +10,9 @@ import it.unica.isw.ctm.tickets.exceptions.info.NoValidationDateFoundException;
 import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
-import java.util.Date;
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * A common ctm ticket that can only be validated <b>once</b>.
@@ -18,12 +20,24 @@ import java.util.Date;
 public abstract class SingleUseTicket extends Ticket {
 	
 	/** The ticket expiration date. */
-	protected Date expireDate;
+	protected Calendar expireDate;
 	/** The ticket validation date. */
-	protected Date timeStamp;
+	protected Calendar timeStamp;
 	private boolean validated;
 
 	
+	public boolean isValidated() {
+		return validated;
+	}
+
+
+	public void setValidated(boolean validated) {
+		if (this.validated)
+			throw new AlreadyValidatedException(id);
+		this.validated = validated;
+	}
+
+
 	/**
 	 * Default ticket, expire date not set.
 	 */
@@ -45,7 +59,8 @@ public abstract class SingleUseTicket extends Ticket {
 		
 		if (validated){
 			validatedString = '\t' + "Validated on: " + timeStamp.toString();
-			if(expireDate.compareTo(new Date(System.currentTimeMillis())) > 0)
+			if(expireDate.compareTo(Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),
+															new Locale("it", "IT"))) > 0)
 				expiredString = "Expired on: " + expireDate;
 			else
 				expiredString = "Still valid, will expire on " + expireDate;
@@ -62,14 +77,14 @@ public abstract class SingleUseTicket extends Ticket {
 	 * Get time stamp, if any.
 	 * @return
 	 */
-	public Date getTimeStamp() {
+	public Calendar getTimeStamp() {
 		if (timeStamp == null)
 			throw new NoValidationDateFoundException(id);
 		return timeStamp;
 	}
 
 	
-	public void setTimeStamp(Date timeStamp) throws AlreadyValidatedException {
+	public void setTimeStamp(Calendar timeStamp) throws AlreadyValidatedException {
 		if (!validated)
 			this.timeStamp = timeStamp;
 		else
@@ -77,7 +92,7 @@ public abstract class SingleUseTicket extends Ticket {
 	}
 
 	
-	public Date getExpireDate() {
+	public Calendar getExpireDate() {
 		return expireDate;
 	}
 	

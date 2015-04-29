@@ -3,7 +3,10 @@ package it.unica.isw.ctm.tickets;
 import it.unica.isw.ctm.tickets.exceptions.ValidationException;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -13,7 +16,8 @@ public abstract class Ticket {
 	
 	/** Random id */
 	protected long id;
-	protected static Date defaultExpireDate = new Date(0L);
+	protected static Calendar defaultExpireDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),
+																		new Locale("it", "IT"));
 	private VENDORS vendor;
 	
 	/**
