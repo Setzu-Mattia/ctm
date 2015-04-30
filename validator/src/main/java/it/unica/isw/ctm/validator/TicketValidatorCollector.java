@@ -3,7 +3,6 @@ package it.unica.isw.ctm.validator;
 import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
 import it.unica.isw.ctm.validator.exceptions.NoSuitableValidatorException;
-import it.unica.isw.ctm.validator.exceptions.NoVendorValidatorException;
 import it.unica.isw.ctm.validator.exceptions.WrongValidatorKindException;
 import it.unica.isw.ctm.validator.singleusetickets.SingleUseTicketValidatorCollector;
 
@@ -17,7 +16,7 @@ import java.util.Iterator;
  */
 public class TicketValidatorCollector implements TicketValidator {
 
-	private TicketValidatorCollector instance;
+	private static TicketValidatorCollector instance;
 	private Collection<TicketValidator> validators;
 	
 	
@@ -31,7 +30,7 @@ public class TicketValidatorCollector implements TicketValidator {
 	}
 	
 	
-	public TicketValidatorCollector getInstance() {
+	public static TicketValidatorCollector getInstance() {
 		if (instance == null)
 			instance = new TicketValidatorCollector();
 		return instance;
@@ -43,6 +42,10 @@ public class TicketValidatorCollector implements TicketValidator {
 	 */
 	@Override
 	public void validate(Ticket ticket) throws NoSuitableValidatorException {
+		
+		if (!canValidate(ticket))
+			throw new NoSuitableValidatorException(ticket);
+		
 		Iterator<TicketValidator> i = validators.iterator();
 		
 		while (i.hasNext()) {
@@ -53,13 +56,8 @@ public class TicketValidatorCollector implements TicketValidator {
 			catch (WrongValidatorKindException e) {
 				continue;
 			}
-			// Found validators for the ticket kind, but no suitable validators 
-			catch (NoVendorValidatorException e) {
-				throw new NoSuitableValidatorException(ticket);
-			}
 		}
-		// In case of no validators
-		throw new NoSuitableValidatorException(ticket);
+
 	}
 
 	/**
@@ -67,7 +65,12 @@ public class TicketValidatorCollector implements TicketValidator {
 	 */
 	@Override
 	public boolean canValidate(Ticket ticket) {
-		return true;
+		switch (TICKETS_KINDS.is(ticket)) {
+		case SINGLE_USE_TICKET:
+			return true;
+		default:
+			return false;		
+		}
 	}
 
 	

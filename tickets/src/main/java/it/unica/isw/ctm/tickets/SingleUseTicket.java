@@ -96,6 +96,10 @@ public abstract class SingleUseTicket extends Ticket {
 		return expireDate;
 	}
 	
+
+	public void setExpireDate(Calendar expireDate) {
+		this.expireDate = expireDate;
+	}
 	
 	/**
 	 * Validate this ticket.

@@ -43,7 +43,7 @@ public class SingleUseTicketValidatorCollector extends AbstractTicketValidator i
 		if (canValidate(ticket)){
 			try {
 				validate((SingleUseTicket)ticket);
-			} catch(NullPointerException e) {
+			} catch(NoSuitableValidatorException e) {
 				throw new NoVendorValidatorException(ticket);
 			}
 		}
