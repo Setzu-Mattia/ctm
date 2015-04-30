@@ -1,6 +1,7 @@
 package it.unica.isw.ctm.validator;
 
 import it.unica.isw.ctm.tickets.Ticket;
+import it.unica.isw.ctm.validator.exceptions.NoSuitableValidatorException;
 
 /**
  * A ticket validator.
@@ -10,9 +11,9 @@ public interface TicketValidator {
 	/**
 	 * Validate the given ticket.
 	 * @param ticket
-	 * @throws Exception 		If something bad happens.
+	 * @throws Exception 		If validator could not validate.
 	 */
-	public abstract void validate(Ticket ticket) throws Exception;
+	public abstract void validate(Ticket ticket) throws NoSuitableValidatorException;
 	
 	
 	

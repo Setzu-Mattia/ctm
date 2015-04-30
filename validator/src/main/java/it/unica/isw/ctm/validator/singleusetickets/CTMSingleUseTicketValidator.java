@@ -8,6 +8,8 @@ import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
 import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
 import it.unica.isw.ctm.tickets.vendors.VENDORS;
 import it.unica.isw.ctm.validator.TicketValidator;
+import it.unica.isw.ctm.validator.exceptions.NoSuitableValidatorException;
+import it.unica.isw.ctm.validator.exceptions.NoVendorValidatorException;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -49,14 +51,14 @@ public class CTMSingleUseTicketValidator extends AbstractSingleUseTicketValidato
 	
 	
 	@Override
-	public void validate(Ticket ticket) throws Exception {
+	public void validate(Ticket ticket) throws NoSuitableValidatorException {
 		if (canValidate(ticket))
 			validate((SingleUseTicket) ticket);
 		else {
 			try {
 				next.validate((SingleUseTicket)ticket);
 			} catch(NullPointerException e) {
-				throw new Exception("No validators found.");
+				throw new NoVendorValidatorException(ticket);
 			}
 		}
 		

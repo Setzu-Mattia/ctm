@@ -11,6 +11,8 @@ import it.unica.isw.ctm.tickets.vendors.VENDORS;
 import it.unica.isw.ctm.tickets.SingleUseTicket;
 import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.exceptions.AlreadyValidatedException;
+import it.unica.isw.ctm.validator.exceptions.NoSuitableValidatorException;
+import it.unica.isw.ctm.validator.exceptions.NoVendorValidatorException;
 
 
 /**
@@ -47,14 +49,14 @@ public class ARSTSingleUseTicketValidator extends AbstractSingleUseTicketValidat
 	
 	
 	@Override
-	public void validate(Ticket ticket) throws Exception {
+	public void validate(Ticket ticket) throws NoSuitableValidatorException {
 		if (canValidate(ticket))
 			validate((SingleUseTicket) ticket);
 		else {
 			try {
 				next.validate((SingleUseTicket)ticket);
 			} catch(NullPointerException e) {
-				throw new Exception("No validators found.");
+				throw new NoVendorValidatorException(ticket);
 			}
 		}
 		

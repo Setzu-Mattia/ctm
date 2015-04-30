@@ -9,6 +9,7 @@ import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
 import it.unica.isw.ctm.validator.AbstractTicketValidator;
 import it.unica.isw.ctm.validator.TicketValidator;
+import it.unica.isw.ctm.validator.exceptions.NoSuitableValidatorException;
 import it.unica.isw.ctm.validator.exceptions.NoVendorValidatorException;
 import it.unica.isw.ctm.validator.exceptions.WrongValidatorKindException;
 
@@ -38,7 +39,7 @@ public class SingleUseTicketValidatorCollector extends AbstractTicketValidator i
 	 * {@inheritDoc}
 	 */
 	@Override
-	public void validate(Ticket ticket) throws Exception {
+	public void validate(Ticket ticket) throws NoSuitableValidatorException {
 		if (canValidate(ticket)){
 			try {
 				validate((SingleUseTicket)ticket);
@@ -60,7 +61,7 @@ public class SingleUseTicketValidatorCollector extends AbstractTicketValidator i
 
 
 	@Override
-	public void validate(SingleUseTicket ticket) throws Exception {
+	public void validate(SingleUseTicket ticket) throws NoSuitableValidatorException {
 		head.validate(ticket);		
 	}
 	
