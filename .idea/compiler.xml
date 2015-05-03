@@ -18,13 +18,6 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Annotation profile for tickets" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
-        <module name="tickets" />
-      </profile>
       <profile default="false" name="Annotation profile for ctm" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -39,11 +32,18 @@
         <processorPath useClasspath="true" />
         <module name="validator" />
       </profile>
+      <profile default="false" name="Annotation profile for validation" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="app" target="1.5" />
       <module name="ctm" target="1.7" />
       <module name="tickets" target="1.7" />
+      <module name="validation" target="1.7" />
       <module name="validator" target="1.7" />
     </bytecodeTargetLevel>
   </component>

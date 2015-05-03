@@ -10,8 +10,11 @@
 
   <groupId>it.unica.isw.ctm.tickets</groupId>
   <artifactId>tickets</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <version>1.0-SNAPSHOT</version>
+  <modules>
+    <module>../validation</module>
+  </modules>
   <name>tickets</name>
   
 	<build> 
