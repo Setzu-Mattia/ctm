@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c64890bc-54ba-4a80-bc1c-238d59bc499d" name="Default" comment="run iterators tests">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tickets/src/main/java/it/unica/isw/ctm/tickets/observers/TicketsObserver.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/tickets/src/main/java/it/unica/isw/ctm/App.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tickets/src/main/java/it/unica/isw/ctm/Wallet.java" afterPath="$PROJECT_DIR$/tickets/src/main/java/it/unica/isw/ctm/Wallet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tickets/pom.xml" afterPath="$PROJECT_DIR$/tickets/pom.xml" />
+    <list default="true" id="c64890bc-54ba-4a80-bc1c-238d59bc499d" name="Default" comment="tmp commit">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="app.iws" />
@@ -63,7 +57,6 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="e#428#429#0" expanded="true" />
                 <element signature="e#478#479#0" expanded="true" />
               </folding>
@@ -404,7 +397,13 @@
       <option name="project" value="LOCAL" />
       <updated>1430666050044</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="tmp commit">
+      <created>1430674422885</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1430674422885</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -477,7 +476,8 @@
       <path value="$PROJECT_DIR$" />
     </ignored-roots>
     <MESSAGE value="run iterators tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="run iterators tests" />
+    <MESSAGE value="tmp commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="tmp commit" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -686,7 +686,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="32" selection-start-line="25" selection-start-column="32" selection-end-line="25" selection-end-column="32" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="e#428#429#0" expanded="true" />
             <element signature="e#478#479#0" expanded="true" />
           </folding>
