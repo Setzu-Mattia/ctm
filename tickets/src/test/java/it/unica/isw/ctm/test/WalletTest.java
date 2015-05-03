@@ -1,4 +1,4 @@
-package it.unica.iws.ctm.test;
+package it.unica.isw.ctm.test;
 
 import java.util.Collection;
 import java.util.HashSet;

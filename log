@@ -27,163 +27,48 @@
 [INFO] skip non existing resourceDirectory /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/src/test/resources
 [INFO] 
 [INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ tickets ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ tickets ---
-[INFO] Surefire report directory: /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running it.unica.iws.ctm.test.WalletTest
-40
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.078 sec
-Running it.unica.isw.ctm.tickets.test.TicketTest
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec
-Running it.unica.isw.ctm.tickets.factories.test.DefaultSingleUseTicketFactoryTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec
-
-Results :
-
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ tickets ---
-[INFO]                                                                         
-[INFO] ------------------------------------------------------------------------
-[INFO] Building validator 1.0-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ validator ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ validator ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ validator ---
-[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
-[INFO] Copying 0 resource
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ validator ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ validator ---
-[INFO] Surefire report directory: /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/validator/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running it.unica.isw.ctm.validator.tests.TicketValidatorCollectorTest
-In while...
-In singleuseticketvalidatorcollector...
-In arstvalidator...
-Can't-validate: SINGLE_USE_TICKET vendor: CTM
-Going on next: it.unica.isw.ctm.validator.singleusetickets.CTMSingleUseTicketValidator
-In ctmvalidator...
-In ctmvalidator for single use...
-Validated
-In while...
-In singleuseticketvalidatorcollector...
-In arstvalidator...
-Can't-validate: SINGLE_USE_TICKET vendor: CTM
-Going on next: it.unica.isw.ctm.validator.singleusetickets.CTMSingleUseTicketValidator
-In ctmvalidator...
-In ctmvalidator for single use...
-Validated
-In while...
-In singleuseticketvalidatorcollector...
-In arstvalidator...
-Validating...
-Validated
-In while...
-In singleuseticketvalidatorcollector...
-In arstvalidator...
-Validating...
-Validated
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.228 sec
-Running it.unica.isw.ctm.validator.singleusetickets.tests.CTMSingleUseTicketValidatorTest
-In ctmvalidator...
-In ctmvalidator for single use...
-Validated
-In ctmvalidator...
-In ctmvalidator for single use...
-Validated
-[90] Ticket validated on: 30/3/2015 at 19:54:46
-[90] Ticket expiring on: 30/3/2015 at 21:24:46
-[120] Ticket validated on: 30/3/2015 at 19:54:46
-[120] Ticket expiring on: 30/3/2015 at 21:54:46
-In ctmvalidator...
-In ctmvalidator for single use...
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.03 sec
-Running it.unica.isw.ctm.validator.singleusetickets.tests.ARSTSingleUseTicketValidatorTest
-In arstvalidator...
-Validating...
-Validated
-In arstvalidator...
-Validating...
-Validated
-[90] Ticket validated on: 30/3/2015 at 19:54:46
-[90] Ticket expiring on: 30/3/2015 at 21:24:46
-[120] Ticket validated on: 30/3/2015 at 19:54:46
-[120] Ticket expiring on: 30/3/2015 at 21:54:46
-In arstvalidator...
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 sec
-
-Results :
-
-Tests run: 8, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ validator ---
-[INFO] Building jar: /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/validator/target/validator-1.0-SNAPSHOT.jar
-[INFO]                                                                         
-[INFO] ------------------------------------------------------------------------
-[INFO] Building app frontend 1.0-SNAPSHOT
-[INFO] ------------------------------------------------------------------------
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ctm ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/ctm/src/main/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ ctm ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ctm ---
-[INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] skip non existing resourceDirectory /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/ctm/src/test/resources
-[INFO] 
-[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ ctm ---
-[INFO] Nothing to compile - all classes are up to date
-[INFO] 
-[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ctm ---
-[INFO] Surefire report directory: /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/ctm/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running ctm.it.unica.isw.ctm.AppTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.081 sec
-Running it.unica.isw.ctm.test.AppTest
-Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec
-
-Results :
-
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
-
-[INFO] 
-[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ ctm ---
+[INFO] Changes detected - recompiling the module!
+[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
+[INFO] Compiling 5 source files to /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/target/test-classes
+[INFO] /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/src/test/java/it/unica/isw/ctm/tickets/test/TicketTest.java: Some input files use or override a deprecated API.
+[INFO] /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/src/test/java/it/unica/isw/ctm/tickets/test/TicketTest.java: Recompile with -Xlint:deprecation for details.
+[INFO] /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/src/test/java/it/unica/isw/ctm/tickets/test/SingleUseTicketIteratorsTest.java: Some input files use unchecked or unsafe operations.
+[INFO] /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/src/test/java/it/unica/isw/ctm/tickets/test/SingleUseTicketIteratorsTest.java: Recompile with -Xlint:unchecked for details.
+[INFO] -------------------------------------------------------------
+[ERROR] COMPILATION ERROR : 
+[INFO] -------------------------------------------------------------
+[ERROR] /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/src/test/java/it/unica/isw/ctm/tickets/iterators/test/SingleUseTicketIteratorsTest.java:[78,66] constructor SingleUse90minutesTicketIterator in class it.unica.isw.ctm.tickets.iterators.singleusetickets.SingleUse90minutesTicketIterator cannot be applied to given types;
+  required: java.util.List<it.unica.isw.ctm.tickets.Ticket>
+  found: java.util.List<it.unica.isw.ctm.tickets.SingleUseTicket>
+  reason: actual argument java.util.List<it.unica.isw.ctm.tickets.SingleUseTicket> cannot be converted to java.util.List<it.unica.isw.ctm.tickets.Ticket> by method invocation conversion
+[INFO] 1 error
+[INFO] -------------------------------------------------------------
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary:
 [INFO] 
-[INFO] app ................................................ SUCCESS [  0.278 s]
-[INFO] tickets ............................................ SUCCESS [ 10.948 s]
-[INFO] validator .......................................... SUCCESS [  1.594 s]
-[INFO] app frontend ....................................... SUCCESS [  1.472 s]
+[INFO] app ................................................ SUCCESS [  0.392 s]
+[INFO] tickets ............................................ FAILURE [ 12.002 s]
+[INFO] validator .......................................... SKIPPED
+[INFO] app frontend ....................................... SKIPPED
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD SUCCESS
+[INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 14.880 s
-[INFO] Finished at: 2015-04-30T19:54:48+02:00
-[INFO] Final Memory: 12M/159M
+[INFO] Total time: 13.107 s
+[INFO] Finished at: 2015-05-03T11:46:52+02:00
+[INFO] Final Memory: 15M/101M
 [INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.3:testCompile (default-testCompile) on project tickets: Compilation failure
+[ERROR] /home/tia/data/unitruth/Ingegneria del Software/Laboratorio/Esercitazioni/app/tickets/src/test/java/it/unica/isw/ctm/tickets/iterators/test/SingleUseTicketIteratorsTest.java:[78,66] constructor SingleUse90minutesTicketIterator in class it.unica.isw.ctm.tickets.iterators.singleusetickets.SingleUse90minutesTicketIterator cannot be applied to given types;
+[ERROR] required: java.util.List<it.unica.isw.ctm.tickets.Ticket>
+[ERROR] found: java.util.List<it.unica.isw.ctm.tickets.SingleUseTicket>
+[ERROR] reason: actual argument java.util.List<it.unica.isw.ctm.tickets.SingleUseTicket> cannot be converted to java.util.List<it.unica.isw.ctm.tickets.Ticket> by method invocation conversion
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR] 
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <goals> -rf :tickets
