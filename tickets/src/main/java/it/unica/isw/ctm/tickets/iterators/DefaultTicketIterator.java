@@ -12,18 +12,18 @@ import java.util.NoSuchElementException;
 /**
  * A iterator over {@link Ticket}s.
  */
-public abstract class AbstractTicketIterator<T extends Ticket> {
+public class DefaultTicketIterator<T extends Ticket> {
 
 	protected TICKETS_KINDS kind;
-	protected List<T> collection;
+	protected List<Ticket> collection;
 	protected int position;
 	
-	public AbstractTicketIterator() {
+	public DefaultTicketIterator() {
 		position = 0;
-		collection = new ArrayList<T>();
+		collection = new ArrayList<Ticket>();
 	}
 	
-	public AbstractTicketIterator(List<T> collection, TICKETS_KINDS kind) {
+	public DefaultTicketIterator(List<Ticket> collection, TICKETS_KINDS kind) {
 		this.collection = collection;
 		this.kind = kind;
 	}
@@ -38,25 +38,19 @@ public abstract class AbstractTicketIterator<T extends Ticket> {
 
 	/**
 	 * Find next element.
-	 * @param		kind					The kind of ticket to find.
-	 * @param		i						The start index.
+	 * @param		current				The start index.
 	 * @param		to						The upper limit of search.
 	 * @return								The index of next element.
-	 * @throws		NullPointerException 	If no
-	 * 										such element is found.
+	 * @throws		NullPointerException If no 	such element is found.
 	 */
-	private int findNext(int current, int to) throws NullPointerException {
-		System.out.println("findNext(" + current +", " + to + ")");
-		if (current >= to){
-			System.out.println("throwing nullpointer...");
+	protected int findNext(int current, int to) throws NullPointerException {
+		if (current >= to)
 			throw new NullPointerException("No next element of kind: " + kind.name());
-		}
 		
 		if (TICKETS_KINDS.is(collection.get(current)) == kind)
 			return current;
 		else{
 			current++;
-			System.out.println("Calling with: " + current + ", " + to);
 			return findNext(current, to);
 		}
 	}
@@ -72,13 +66,9 @@ public abstract class AbstractTicketIterator<T extends Ticket> {
 	 * 					element, false otherwise.
 	 */
 	protected final boolean hasNextTicket(int current, int to) {
-		System.out.println("In hasNextTicket(" + current + ", " + to + ")");
 		try {
-			if (findNext(current, to) >= position)
-				return true;
-			return false;
+			return findNext(current, to) >= position;
 		} catch(NullPointerException e) {
-			System.out.println("No next ticket");
 			return false;
 		}
 	}
@@ -86,17 +76,13 @@ public abstract class AbstractTicketIterator<T extends Ticket> {
 	
 	/**
 	 * Get the next ticket of the given kind.
-	 * @param kind		The ticket kind.
 	 * @return		 	The ticket of the given kind,
 	 * 					if present. null otherwise.
 	 */
-	protected Ticket nextTicket() throws NoSuchElementException {
+	protected T nextTicket() throws NoSuchElementException {
 		try {
-			System.out.println("abstract... next()");
-			int foundIndex = findNext(position, collection.size());
-			System.out.println("Next found in position: " + position);
-			position = foundIndex + 1;
-			return collection.get(foundIndex);
+			position = findNext(position, collection.size()) + 1;
+			return (T) collection.get(position - 1);
 		} catch (NullPointerException e) {
 			throw new NoSuchElementException();
 		}
