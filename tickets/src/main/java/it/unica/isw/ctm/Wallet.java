@@ -3,18 +3,18 @@ package it.unica.isw.ctm;
 
 import it.unica.isw.ctm.tickets.Ticket;
 
-import java.util.*;
+import java.util.Collection;
+import java.util.Observable;
+import java.util.Vector;
 
 public class Wallet extends Observable {
 
 	private static Wallet wallet;
 	private Collection<Ticket> tickets;
-	private Set<Observer> observers;
 
 	
 	private Wallet() {
 		tickets = new Vector<Ticket>();
-		observers = new HashSet<Observer>();
 	}
 
 	

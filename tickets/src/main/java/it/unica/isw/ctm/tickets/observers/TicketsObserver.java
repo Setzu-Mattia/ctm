@@ -2,9 +2,7 @@ package it.unica.isw.ctm.tickets.observers;
 
 
 import it.unica.isw.ctm.Wallet;
-import it.unica.isw.ctm.tickets.Ticket;
 
-import java.util.Collection;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -14,16 +12,17 @@ import java.util.Observer;
  */
 public class TicketsObserver implements Observer {
 
-    private Collection<Ticket> currenTickets;
+    private int numTickets;
 
-    public TicketsObserver(Collection<Ticket> currenTickets) {
-        this.currenTickets = currenTickets;
+
+    public TicketsObserver(int numTickets) {
+        this.numTickets = numTickets;
     }
 
 
     @Override
     public void update(Observable observable, Object o) {
-        Wallet observedWallet = (Wallet) observable;
-        currenTickets = observedWallet.getTickets();
+        numTickets = ((Wallet)observable).getTickets().size();
     }
+
 }
