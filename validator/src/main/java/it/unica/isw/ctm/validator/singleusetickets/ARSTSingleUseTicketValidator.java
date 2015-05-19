@@ -1,17 +1,17 @@
 package it.unica.isw.ctm.validator.singleusetickets;
 
 
-import java.util.Calendar;
-import java.util.Locale;
-import java.util.TimeZone;
-
-import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
-import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
-import it.unica.isw.ctm.tickets.vendors.VENDORS;
 import it.unica.isw.ctm.tickets.SingleUseTicket;
 import it.unica.isw.ctm.tickets.Ticket;
 import it.unica.isw.ctm.tickets.exceptions.AlreadyValidatedException;
+import it.unica.isw.ctm.tickets.kinds.SINGLE_USE_TICKETS;
+import it.unica.isw.ctm.tickets.kinds.TICKETS_KINDS;
+import it.unica.isw.ctm.tickets.vendors.VENDORS;
 import it.unica.isw.ctm.validator.exceptions.NoSuitableValidatorException;
+
+import java.util.Calendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -41,8 +41,10 @@ public class ARSTSingleUseTicketValidator extends AbstractSingleUseTicketValidat
 	
 	@Override
 	public void validate(Ticket ticket) throws NoSuitableValidatorException {
-		if (canValidate(ticket))
+		if (canValidate(ticket)) {
 			validate((SingleUseTicket) ticket);
+			setChanged();
+		}
 		else if (next != null)
 			next.validate(ticket);
 		else
@@ -62,7 +64,7 @@ public class ARSTSingleUseTicketValidator extends AbstractSingleUseTicketValidat
 		Calendar expireDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),
 											new Locale("it", "IT"));
 		
-		switch(SINGLE_USE_TICKETS.is((SingleUseTicket)ticket)) {
+		switch(SINGLE_USE_TICKETS.is(ticket)) {
 			case TICKET_120MINUTES:
 				expireDate.add(Calendar.MINUTE, 120);
 				break;
@@ -74,7 +76,8 @@ public class ARSTSingleUseTicketValidator extends AbstractSingleUseTicketValidat
 		ticket.setTimeStamp(now);
 		ticket.setExpireDate(expireDate);
 		ticket.setValidated(true);
-		
+
+		setChanged();
 	}
 
 
@@ -83,10 +86,8 @@ public class ARSTSingleUseTicketValidator extends AbstractSingleUseTicketValidat
 	 */
 	@Override
 	public boolean canValidate(Ticket ticket) {
-		if (TICKETS_KINDS.is(ticket) == TICKETS_KINDS.SINGLE_USE_TICKET
-				&& ticket.getVendor() == VENDORS.ARST)
-			return true;
-		return false;
+		return TICKETS_KINDS.is(ticket) == TICKETS_KINDS.SINGLE_USE_TICKET
+				&& ticket.getVendor() == VENDORS.ARST;
 	}
 
 	

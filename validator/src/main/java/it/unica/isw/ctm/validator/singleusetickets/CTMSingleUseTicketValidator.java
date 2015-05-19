@@ -51,8 +51,10 @@ public class CTMSingleUseTicketValidator extends AbstractSingleUseTicketValidato
 	
 	@Override
 	public void validate(Ticket ticket) throws NoSuitableValidatorException {
-		if (canValidate(ticket))
+		if (canValidate(ticket)) {
 			validate((SingleUseTicket) ticket);
+			setChanged();
+		}
 		else if (next != null)
 			next.validate((SingleUseTicket)ticket);
 		else
@@ -72,7 +74,7 @@ public class CTMSingleUseTicketValidator extends AbstractSingleUseTicketValidato
 		Calendar expireDate = Calendar.getInstance(TimeZone.getTimeZone("Europe/Rome"),
 											new Locale("it", "IT"));
 		
-		switch(SINGLE_USE_TICKETS.is((SingleUseTicket)ticket)) {
+		switch(SINGLE_USE_TICKETS.is(ticket)) {
 			case TICKET_120MINUTES:
 				expireDate.add(Calendar.MINUTE, 120);
 				break;
@@ -84,6 +86,8 @@ public class CTMSingleUseTicketValidator extends AbstractSingleUseTicketValidato
 		ticket.setTimeStamp(now);
 		ticket.setExpireDate(expireDate);
 		ticket.setValidated(true);
+
+		setChanged();
 	}
 
 
@@ -92,15 +96,13 @@ public class CTMSingleUseTicketValidator extends AbstractSingleUseTicketValidato
 	 */
 	@Override
 	public boolean canValidate(Ticket ticket) {
-		if (TICKETS_KINDS.is(ticket) == TICKETS_KINDS.SINGLE_USE_TICKET
-				&& ticket.getVendor() == VENDORS.CTM)
-			return true;
-		return false;
+		return TICKETS_KINDS.is(ticket) == TICKETS_KINDS.SINGLE_USE_TICKET
+				&& ticket.getVendor() == VENDORS.CTM;
 	}
 	
 	
 	/**
-	 * 
+	 * {@inheritDoc}
 	 */
 	@Override
 	public TicketValidator getNext() throws NullPointerException {
